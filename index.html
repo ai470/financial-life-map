@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Финансовая карта жизни: что делать с деньгами в 20, 30, 40, 50 и 60 лет</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#f6f2eb',
+                        foreground: '#0f2147',
+                        primary: '#0f2147',
+                        secondary: '#394f7b',
+                        accent: '#ddbc86',
+                        muted: '#ded0c8',
+                        destructive: '#b73c2d',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        html {
+            font-size: 17px;
+        }
+
+        @media (min-width: 640px) {
+            html {
+                font-size: 18px;
+            }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f2eb;
+            color: #0f2147;
+            scroll-behavior: smooth;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #0F2147 0%, #394F7B 40%, #DDBC86 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(222, 208, 200, 0.5);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(15, 33, 71, 0.12);
+        }
+
+        .animate-fade-up {
+            animation: fade-up 0.7s ease-out both;
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(32px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const prepositions = ["в", "на", "с", "у", "к", "о", "об", "от", "до", "по", "для", "при", "из", "за", "под", "над", "без", "про", "и", "а", "но", "или", "как", "все", "всё"];
+            const regex = new RegExp(`(^|[\\s()\"«\\-])(${prepositions.join('|')})\\s+`, 'gi');
+            const excludeTags = ['SCRIPT', 'STYLE', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
+
+            function walk(node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const replaced = node.nodeValue.replace(regex, "$1$2\u00A0");
+                    if (replaced !== node.nodeValue) {
+                        node.nodeValue = replaced;
+                    }
+                } else if (node.nodeType === Node.ELEMENT_NODE && !excludeTags.includes(node.tagName)) {
+                    for (let child of node.childNodes) {
+                        walk(child);
+                    }
+                }
+            }
+            walk(document.body);
+        });
+    </script>
+</head>
+
+<body class="antialiased selection:bg-accent/30 min-h-screen">
+
+    <!-- Hero Section (Титульный лист) -->
+    <section class="relative isolate overflow-hidden bg-[#F6F2EB] min-h-screen flex flex-col justify-center items-center text-center px-4">
+        <!-- Decorative blobs -->
+        <div class="pointer-events-none absolute inset-0">
+            <div
+                class="absolute -top-32 -right-32 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-[#DDBC86]/30 to-transparent blur-3xl">
+            </div>
+            <div
+                class="absolute bottom-0 -left-48 h-[500px] w-[500px] rounded-full bg-gradient-to-tr from-[#0F2147]/15 to-transparent blur-3xl">
+            </div>
+        </div>
+
+        <div class="max-w-5xl relative z-10 w-full animate-fade-up flex flex-col items-center">
+            <span
+                class="inline-flex items-center gap-2 rounded-full border border-accent/50 bg-white/70 px-4 py-2 text-sm font-medium text-[#7A531C] shadow-sm backdrop-blur mb-8">
+                <svg class="h-4 w-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                    </path>
+                </svg>
+                Карта финансовых приоритетов
+            </span>
+
+            <h1 class="text-gradient text-5xl font-extrabold leading-[1.15] tracking-tight sm:text-6xl lg:text-7xl mb-8">
+                Финансовая карта жизни
+            </h1>
+
+            <p class="max-w-xl text-lg leading-relaxed text-secondary sm:text-xl mb-12">
+                Что делать с деньгами в 20, 30, 40, 50 и 60 лет. Какие финансовые решения в приоритете в каждом возрасте —
+                от первого фундамента до жизни на капитал.
+            </p>
+
+            <a href="#introduction"
+                class="inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 text-lg font-semibold text-white shadow-lg hover:bg-secondary transition-all hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 mb-6 cursor-pointer">
+                Читать гайд
+                <svg class="h-5 w-5 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="mx-auto max-w-4xl px-4 pt-12 pb-16 space-y-24 animate-fade-up" style="animation-delay: 0.2s;">
+
+        <!-- Введение -->
+        <section id="introduction" class="glass rounded-3xl p-6 sm:p-8 hover-lift shadow-md">
+            <h2 class="text-2xl font-bold text-primary mb-4">Введение</h2>
+            <p class="text-lg text-secondary leading-relaxed mb-4">
+                Представьте, что ваш путь к финансовой стабильности — это строительство дома.
+            </p>
+            <ul class="space-y-3 text-secondary mb-6">
+                <li class="flex items-start gap-2">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>
+                    <span><strong class="text-primary">В 20 лет</strong> вы закладываете фундамент: формируете привычки, ставите цели, создаёте подушку безопасности.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>
+                    <span><strong class="text-primary">В 30</strong> — возводите стены: растите доход, создаёте и приумножаете капитал, решаете вопрос с жильём.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>
+                    <span><strong class="text-primary">В 40–50</strong> — укрепляете конструкцию и защищаете построенное. Наращиваете активы, «заставляете» деньги работать на вас.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>
+                    <span><strong class="text-primary">После 60</strong> живёте в доме, который создавали десятилетиями — управляете накопленным капиталом.</span>
+                </li>
+            </ul>
+            <div class="bg-gradient-to-r from-accent/20 to-transparent rounded-2xl p-4 sm:p-6 border-l-0 sm:border-l-4 border-accent [hyphens:auto]">
+                <p class="font-bold text-primary mb-2 text-lg">Главная проблема: многие пытаются строить крышу, когда ещё нет фундамента.</p>
+                <p class="text-secondary">Хотят пассивный доход, хотя ещё не научились регулярно откладывать. Поэтому «дом» в мечтах красивый, а в жизни неустойчивый. Этот гайд — карта приоритетов для каждого возраста.</p>
+            </div>
+        </section>
+
+        <!-- 20 лет -->
+        <section>
+            <div class="border-l-4 border-accent pl-5 mb-10">
+                <h2 class="text-3xl font-bold text-primary sm:text-4xl">20 лет <span
+                        class="block sm:inline font-normal text-secondary text-2xl sm:text-3xl">время — ваш лучший актив</span></h2>
+            </div>
+
+            <article class="rounded-3xl bg-white p-6 sm:p-8 shadow-lg border border-muted hover-lift mb-8">
+                <h3 class="text-xl font-bold text-primary mb-4">Главная мысль десятилетия</h3>
+                <p class="text-secondary mb-4 leading-relaxed">
+                    В 20 лет люди концентрируются на том, что у них мало денег. Но у вас есть то, чего потом не купить ни
+                    за какую зарплату, — <strong class="text-primary">время</strong>. Благодаря ему работает сложный
+                    процент: доход начисляется не только на вложенные деньги, но и на тот доход, что уже накопился.
+                </p>
+                <p class="text-secondary italic mb-6 leading-relaxed bg-[#F6F2EB] rounded-2xl p-4 border border-muted">
+                    Например, вы вложили 100 000 ₽ под 10% годовых. Через год — 110 000 ₽. На второй год 10% начисляются
+                    уже на 110 000 ₽, потом на 121 000 ₽. И с каждым годом деньги зарабатывают всё больше денег.
+                </p>
+
+                <p class="text-secondary mb-4 font-medium">Петя против Васи — оба вложили поровну:</p>
+                <div class="grid sm:grid-cols-2 gap-4 mb-4">
+                    <div class="bg-gradient-to-br from-accent/20 to-transparent rounded-2xl p-5 border border-accent/30">
+                        <p class="font-bold text-primary mb-1">Петя начал в 20 лет</p>
+                        <p class="text-sm text-secondary mb-3">по 5 000 ₽/мес в течение 20 лет, потом не вносил ничего</p>
+                        <p class="text-3xl font-bold text-[#7A531C]">≈ 38 млн ₽</p>
+                        <p class="text-xs text-secondary mt-1">к 65 годам</p>
+                    </div>
+                    <div class="bg-[#F6F2EB] rounded-2xl p-5 border border-muted">
+                        <p class="font-bold text-primary mb-1">Вася начал в 45 лет</p>
+                        <p class="text-sm text-secondary mb-3">по 5 000 ₽/мес в течение 20 лет</p>
+                        <p class="text-3xl font-bold text-primary">≈ 3,6 млн ₽</p>
+                        <p class="text-xs text-secondary mt-1">к 65 годам</p>
+                    </div>
+                </div>
+                <p class="text-secondary text-sm mb-2">Каждый вложил <strong>5 000 ₽ × 12 × 20 = 1 200 000 ₽</strong>. А результат отличается более чем в <strong class="text-primary">10 раз</strong> — только потому, что Петя дал капиталу время поработать.</p>
+                <p class="text-xs text-secondary bg-accent/10 p-3 rounded-xl border border-accent/20">Пример упрощённый: без учёта инфляции, налогов и изменения доходности. Задача — показать принцип, а не дать точный прогноз.</p>
+            </article>
+
+            <article class="glass rounded-3xl p-6 sm:p-8 hover-lift mb-8">
+                <h3 class="text-xl font-bold text-primary mb-6">Что делать в 20 лет</h3>
+                <ol class="space-y-4 text-secondary">
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">1</span>
+                        <span><strong class="text-primary">Начать вести учёт.</strong> Приложение, таблица, блокнот — неважно. Главное — увидеть, куда уходят те самые 1 000–5 000 ₽ «непонятно на что».</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">2</span>
+                        <span><strong class="text-primary">Собрать первую подушку.</strong> Резерв на случай «уволили», «сломался ноутбук», «заболел». Стартовая цель — три месячных расхода.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">3</span>
+                        <span><strong class="text-primary">Быть осторожным с кредитами.</strong> Рассрочка на технику под 0% — нормально. Кредит на отпуск под 25% — финансовый яд: потом пять месяцев работаете на банк.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">4</span>
+                        <span><strong class="text-primary">Начать инвестировать с небольших сумм</strong> — от 1 000–3 000 ₽/мес. Сначала понять базу: акции, облигации, фонды, ИИС, риски каждого инструмента. Задача — научиться, пока цена ошибки мала.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">5</span>
+                        <span><strong class="text-primary">Вкладываться в себя.</strong> Курс за 40 000, поднимающий зарплату на 20 000 в месяц, окупается за два месяца.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">6</span>
+                        <span><strong class="text-primary">Поставить цели.</strong> Не «хочу жить хорошо», а конкретно — где жить, как отдыхать, сколько денег в запасе. Потом переводите мечты в цифры.</span>
+                    </li>
+                </ol>
+            </article>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="rounded-2xl border border-destructive/20 bg-white p-5 flex items-start gap-4">
+                    <div class="shrink-0 mt-1 flex h-10 w-10 items-center justify-center rounded-xl bg-destructive/10">
+                        <svg class="w-6 h-6 text-destructive" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="font-bold text-primary mb-1">Подводный камень</p>
+                        <p class="text-sm text-secondary">«Начну, когда буду больше зарабатывать». Эту фразу вы будете слышать в голове до 35 лет. Потом — до 45. Капитал часто формируется не с миллионов, а с небольших сумм.</p>
+                    </div>
+                </div>
+                <div class="rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/15 to-transparent p-5 flex items-start gap-4">
+                    <div class="shrink-0 mt-1 flex h-10 w-10 items-center justify-center rounded-xl bg-accent/20">
+                        <svg class="w-6 h-6 text-[#7A531C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="font-bold text-primary mb-1">Ориентир к 30 годам</p>
+                        <p class="text-sm text-secondary">В накоплениях — примерно один годовой доход. Стремитесь к тому, чтобы был запас, спокойствие и ощущение, что деньги становятся опорой, а не вечной тревогой.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 30 лет -->
+        <section>
+            <div class="border-l-4 border-accent pl-5 mb-10">
+                <h2 class="text-3xl font-bold text-primary sm:text-4xl">30 лет <span
+                        class="block sm:inline font-normal text-secondary text-2xl sm:text-3xl">первый капитал и разгон</span></h2>
+            </div>
+
+            <article class="rounded-3xl bg-white p-6 sm:p-8 shadow-lg border border-muted hover-lift mb-8">
+                <h3 class="text-xl font-bold text-primary mb-4">Главная мысль десятилетия</h3>
+                <p class="text-secondary mb-4 leading-relaxed">
+                    Доход начал расти — и включается главный враг тридцатилетних, «инфляция стиля жизни». Это когда после
+                    зарплаты 80 000 вы переехали в квартиру за 60 000, а после 150 000 — за 90 000. И в конце месяца снова
+                    не остаётся ничего.
+                </p>
+                <div class="bg-primary text-white p-5 rounded-2xl">
+                    <p class="text-white/90">Рост зарплаты может и должен повышать качество жизни. Но установите ориентир:</p>
+                    <p class="mt-2 font-medium text-accent">Подняли доход на 30 000 → 10 000 на быт, 20 000 — в накопления и инвестиции.</p>
+                    <p class="text-white/70 text-sm mt-2">Иначе вы просто попали на более дорогую «беговую дорожку».</p>
+                </div>
+            </article>
+
+            <article class="glass rounded-3xl p-6 sm:p-8 hover-lift mb-8">
+                <h3 class="text-xl font-bold text-primary mb-6">Что делать</h3>
+                <ol class="space-y-4 text-secondary mb-6">
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">1</span>
+                        <span><strong class="text-primary">Увеличить подушку до 6 месяцев расходов.</strong> Возможно, уже есть ипотека, ребёнок, кредит за машину — пробуксовка в 2–3 месяца уже бьёт больно.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">2</span>
+                        <span><strong class="text-primary">Регулярно инвестировать, а не «когда останется».</strong> Часть денег — в стабильных инструментах, часть — на рост, часть — на долгосрочные цели.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">3</span>
+                        <span><strong class="text-primary">Не превращать рост дохода в рост кредитов.</strong> Если вместе с доходом растут только платежи, вы не свободнее — вы сильнее зависите от зарплаты.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">4</span>
+                        <span><strong class="text-primary">Начать считать личный пенсионный капитал.</strong> Сколько хотите получать в будущем, какой капитал нужен, сколько откладывать. Начать в 30 — гораздо легче.</span>
+                    </li>
+                </ol>
+
+                <p class="text-secondary mb-3 font-medium">Для примера — умеренный портфель:</p>
+                <div class="grid sm:grid-cols-3 gap-3">
+                    <div class="bg-white rounded-2xl p-4 border border-muted text-center">
+                        <p class="text-2xl font-bold text-primary">55%</p>
+                        <p class="text-sm font-bold text-secondary">облигации</p>
+                        <p class="text-xs text-secondary mt-1">стабильная часть, предсказуемые выплаты</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-4 border border-muted text-center">
+                        <p class="text-2xl font-bold text-primary">35%</p>
+                        <p class="text-sm font-bold text-secondary">акции</p>
+                        <p class="text-xs text-secondary mt-1">рост капитала на длинной дистанции</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-4 border border-accent text-center">
+                        <p class="text-2xl font-bold text-primary">10%</p>
+                        <p class="text-sm font-bold text-secondary">золото</p>
+                        <p class="text-xs text-secondary mt-1">защита от инфляции и кризисов</p>
+                    </div>
+                </div>
+            </article>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="rounded-2xl border border-destructive/20 bg-white p-5 flex items-start gap-4">
+                    <div class="shrink-0 mt-1 flex h-10 w-10 items-center justify-center rounded-xl bg-destructive/10">
+                        <svg class="w-6 h-6 text-destructive" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="font-bold text-primary mb-1">Подводный камень</p>
+                        <p class="text-sm text-secondary">«Я уже зарабатываю достаточно, можно расслабиться. До пенсии далеко, как-нибудь потом разберусь».</p>
+                    </div>
+                </div>
+                <div class="rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/15 to-transparent p-5 flex items-start gap-4">
+                    <div class="shrink-0 mt-1 flex h-10 w-10 items-center justify-center rounded-xl bg-accent/20">
+                        <svg class="w-6 h-6 text-[#7A531C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="font-bold text-primary mb-1">Ориентир к 40 годам</p>
+                        <p class="text-sm text-secondary">Около трёх годовых доходов в накоплениях, минимум долгов, инвестиционный портфель, который регулярно пополняется и работает на вас.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 40 лет -->
+        <section>
+            <div class="border-l-4 border-accent pl-5 mb-10">
+                <h2 class="text-3xl font-bold text-primary sm:text-4xl">40 лет <span
+                        class="block sm:inline font-normal text-secondary text-2xl sm:text-3xl">большие решения и защита капитала</span></h2>
+            </div>
+
+            <article class="rounded-3xl bg-white p-6 sm:p-8 shadow-lg border border-muted hover-lift mb-8">
+                <h3 class="text-xl font-bold text-primary mb-4">Главная мысль десятилетия</h3>
+                <p class="text-secondary leading-relaxed">
+                    Доход обычно на пике карьеры. Но рядом — растущие подростки, стареющие родители, ипотечный «хвост» и
+                    первое отчётливое ощущение, что время бежит быстрее, чем казалось. Задача — укрепиться, защитить
+                    капитал и увеличивать его.
+                </p>
+            </article>
+
+            <article class="glass rounded-3xl p-6 sm:p-8 hover-lift mb-8">
+                <h3 class="text-xl font-bold text-primary mb-6">Что делать</h3>
+                <ol class="space-y-4 text-secondary">
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">1</span>
+                        <span><strong class="text-primary">Пересчитать личный пенсионный капитал.</strong> Сколько хотите после 60? Какой капитал нужен? Сколько уже есть и сколько добавлять? В 40 эти цифры нельзя держать «в голове» — их нужно видеть в таблице.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">2</span>
+                        <span><strong class="text-primary">Усилить инвестиционный портфель.</strong> Деньги должны работать не хаотично, а под конкретную цель.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">3</span>
+                        <span><strong class="text-primary">Закрыть большие долги и убрать утечки.</strong> Важно не кормить банк процентами, а направлять эти деньги в активы.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">4</span>
+                        <span><strong class="text-primary">Защитить семью и капитал.</strong> Если от вашего дохода зависят дети, супруг, родители — подумайте о страховании жизни, юридической защите активов, наследовании и резерве. Это про ответственность, а не про страх.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">5</span>
+                        <span><strong class="text-primary">Отдельно планировать крупные расходы.</strong> Образование детей, помощь родителям, здоровье, ремонт, переезд не должны ломать пенсионный план — на них нужны отдельные счета.</span>
+                    </li>
+                </ol>
+            </article>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="rounded-2xl border border-destructive/20 bg-white p-5 flex items-start gap-4">
+                    <div class="shrink-0 mt-1 flex h-10 w-10 items-center justify-center rounded-xl bg-destructive/10">
+                        <svg class="w-6 h-6 text-destructive" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="font-bold text-primary mb-1">Подводный камень</p>
+                        <p class="text-sm text-secondary">Иллюзия, что высокий доход всё решит. Но даже при большой зарплате на пенсии бывает просадка в несколько раз. Времени на разгон меньше, обязательств больше, ошибки дороже.</p>
+                    </div>
+                </div>
+                <div class="rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/15 to-transparent p-5 flex items-start gap-4">
+                    <div class="shrink-0 mt-1 flex h-10 w-10 items-center justify-center rounded-xl bg-accent/20">
+                        <svg class="w-6 h-6 text-[#7A531C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="font-bold text-primary mb-1">Ориентир к 50 годам</p>
+                        <p class="text-sm text-secondary">Закрытые большие долги, подушка на 6–12 месяцев и капитал хотя бы 5–7 годовых доходов.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 50 лет -->
+        <section>
+            <div class="border-l-4 border-accent pl-5 mb-10">
+                <h2 class="text-3xl font-bold text-primary sm:text-4xl">50 лет <span
+                        class="block sm:inline font-normal text-secondary text-2xl sm:text-3xl">от заработка к капиталу</span></h2>
+            </div>
+
+            <article class="rounded-3xl bg-white p-6 sm:p-8 shadow-lg border border-muted hover-lift mb-8">
+                <h3 class="text-xl font-bold text-primary mb-4">Главная мысль десятилетия</h3>
+                <p class="text-secondary leading-relaxed">
+                    Это десятилетие переориентации. До этого вы зарабатывали и копили. После 50 включается другая логика:
+                    пора превращать накопленное в источник пассивного дохода.
+                </p>
+            </article>
+
+            <article class="glass rounded-3xl p-6 sm:p-8 hover-lift mb-8">
+                <h3 class="text-xl font-bold text-primary mb-6">Что делать конкретно</h3>
+                <ol class="space-y-4 text-secondary">
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">1</span>
+                        <span><strong class="text-primary">Пересобрать портфель под новые сроки.</strong> К 50 у большинства сумм появляется дата: вуз ребёнку через 5 лет, пенсия через 10, ремонт через 3. Под короткие задачи — депозиты и облигации с подходящим сроком; под длинные — фонды, надёжные облигации, аренда. Доля спекулятивных историй сокращается.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">2</span>
+                        <span><strong class="text-primary">Подумать о даунсайзинге.</strong> Дети съехали, в 4-комнатной вас двое. Поменять на 2-комнатную в том же районе, а разницу — в инструменты под 8–10% годовых. Квартплата меньше, а к доходу плюс 30–50 тыс. в месяц.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">3</span>
+                        <span><strong class="text-primary">Посчитать пенсионный денежный поток.</strong> Сколько будет в месяц: пенсия + аренда + проценты с накоплений? Если меньше, чем тратите, и разрыв большой — у вас есть десять лет на исправление. Это много.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">4</span>
+                        <span><strong class="text-primary">Превращать капитал в денежный поток.</strong> Смотрите не только на сумму, а на доход, который она даст. Задача — собрать систему, которая после 60 частично заменит зарплату.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">5</span>
+                        <span><strong class="text-primary">Помогать детям — но не за свой счёт.</strong> Помощь со взносом, свадьбой, стартапом — нормально. Разрушить ради этого пенсионную подушку — нет. Вы не сможете содержать детей в их 70, если в свои 70 сидите без денег.</span>
+                    </li>
+                </ol>
+            </article>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="rounded-2xl border border-destructive/20 bg-white p-5 flex items-start gap-4">
+                    <div class="shrink-0 mt-1 flex h-10 w-10 items-center justify-center rounded-xl bg-destructive/10">
+                        <svg class="w-6 h-6 text-destructive" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="font-bold text-primary mb-1">Подводный камень</p>
+                        <p class="text-sm text-secondary">«Работать буду до 70, я нормально себя чувствую». Здоровье и востребованность — переменные, на которые мы не до конца влияем. Нужен план «если завтра придётся».</p>
+                    </div>
+                </div>
+                <div class="rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/15 to-transparent p-5 flex items-start gap-4">
+                    <div class="shrink-0 mt-1 flex h-10 w-10 items-center justify-center rounded-xl bg-accent/20">
+                        <svg class="w-6 h-6 text-[#7A531C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="font-bold text-primary mb-1">Ориентир к 60 годам</p>
+                        <p class="text-sm text-secondary">Около семи годовых доходов. И стабильный пассивный доход, способный покрыть базовые траты без обращения к основному капиталу.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 60 лет -->
+        <section>
+            <div class="border-l-4 border-accent pl-5 mb-10">
+                <h2 class="text-3xl font-bold text-primary sm:text-4xl">60 лет <span
+                        class="block sm:inline font-normal text-secondary text-2xl sm:text-3xl">жизнь на капитал</span></h2>
+            </div>
+
+            <article class="rounded-3xl bg-white p-6 sm:p-8 shadow-lg border border-muted hover-lift mb-8">
+                <h3 class="text-xl font-bold text-primary mb-4">Главная мысль десятилетия</h3>
+                <p class="text-secondary leading-relaxed">
+                    Теперь капитал работает на вас, а не вы на него. Задача — не сжечь его за первые пять лет и не сидеть
+                    на нём как Скрудж Макдак, отказывая себе во всём.
+                </p>
+            </article>
+
+            <article class="glass rounded-3xl p-6 sm:p-8 hover-lift mb-8">
+                <h3 class="text-xl font-bold text-primary mb-6">Что делать конкретно</h3>
+                <ol class="space-y-4 text-secondary">
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">1</span>
+                        <span><strong class="text-primary">Перевести портфель в режим «выплат».</strong> Если раньше проценты реинвестировали — теперь они идут вам как доход. Это вклады с ежемесячной выплатой, дивидендные акции, купонные облигации, аренда.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">2</span>
+                        <span><strong class="text-primary">Использовать правило 4%.</strong> Если снимать не больше 4% капитала в год, при разумном размещении деньги почти наверняка переживут 25–30 лет. 10 млн → около 33 000 ₽/мес сверх остальных доходов, не уменьшая тело капитала.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">3</span>
+                        <span><strong class="text-primary">Оптимизировать налоги и льготы.</strong> Имущественный вычет, льготы на проезд, бесплатные обследования, послабления по налогам для пенсионеров. На горизонте 20 лет набегает прилично.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">4</span>
+                        <span><strong class="text-primary">Следить за здоровьем.</strong> В 60 лет здоровье — часть финансового плана. Задача — не героически терпеть, а сохранить ресурс, который позволяет жить спокойно.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-[#7A531C]">5</span>
+                        <span><strong class="text-primary">Жить.</strong> Накопления — не самоцель, а инструмент. Если в 65 не позволить себе того, ради чего копили, в 80 это уже не понадобится.</span>
+                    </li>
+                </ol>
+            </article>
+
+            <div class="rounded-2xl border border-destructive/20 bg-white p-5 flex items-start gap-4">
+                <div class="shrink-0 mt-1 flex h-10 w-10 items-center justify-center rounded-xl bg-destructive/10">
+                    <svg class="w-6 h-6 text-destructive" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                </div>
+                <div>
+                    <p class="font-bold text-primary mb-1">Подводный камень</p>
+                    <p class="text-sm text-secondary">«Давайте всё детям». Эмоциональное решение, которое часто оборачивается тем, что в 75 человек оказывается без средств и зависит от того же ребёнка — а отношения от этой роли портятся.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Сводная карта -->
+        <section
+            class="relative overflow-hidden rounded-[2rem] bg-gradient-to-b from-[#F6F2EB] to-white border border-accent/40 shadow-xl">
+            <div class="absolute top-0 right-0 h-64 w-64 rounded-full bg-accent/10 blur-3xl"></div>
+            <div class="p-6 sm:p-8 md:p-12 relative z-10">
+                <div class="mb-8 text-center">
+                    <p class="text-sm font-bold uppercase tracking-[0.3em] text-accent">Главное</p>
+                    <h2 class="mt-3 text-3xl font-bold text-primary sm:text-4xl">Сводная карта</h2>
+                    <p class="mt-3 text-secondary">Можно распечатать и повесить рядом с холодильником — для ориентира, чтобы не сбиваться с пути.</p>
+                </div>
+
+                <div class="overflow-x-auto rounded-2xl border border-muted bg-white">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-primary text-white">
+                            <tr>
+                                <th class="p-3 font-semibold">Возраст</th>
+                                <th class="p-3 font-semibold">Главная задача</th>
+                                <th class="p-3 font-semibold">Подушка</th>
+                                <th class="p-3 font-semibold">Накопления — ориентир</th>
+                                <th class="p-3 font-semibold">Главный риск</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-muted text-secondary">
+                            <tr>
+                                <td class="p-3 font-bold text-primary">20</td>
+                                <td class="p-3">Привычки и первый опыт</td>
+                                <td class="p-3">3 месяца расходов</td>
+                                <td class="p-3">≈ 1 годовой доход к 30 годам</td>
+                                <td class="p-3">«Начну потом»</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-primary">30</td>
+                                <td class="p-3">Разгон + автоматизация</td>
+                                <td class="p-3">6 месяцев расходов</td>
+                                <td class="p-3">≈ 3 годовых дохода к 40 годам</td>
+                                <td class="p-3">Инфляция стиля жизни</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-primary">40</td>
+                                <td class="p-3">Защита и диверсификация</td>
+                                <td class="p-3">6–12 месяцев расходов</td>
+                                <td class="p-3">≈ 5 годовых доходов к 50 годам</td>
+                                <td class="p-3">Старые долги и «вторая молодость»</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-primary">50</td>
+                                <td class="p-3">Переход к пассивному доходу</td>
+                                <td class="p-3">6–12 месяцев расходов</td>
+                                <td class="p-3">7+ годовых доходов к 60 годам</td>
+                                <td class="p-3">Слишком агрессивный портфель</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-primary">60</td>
+                                <td class="p-3">Жизнь на капитал</td>
+                                <td class="p-3">12+ месяцев расходов</td>
+                                <td class="p-3">снимать не больше 4% капитала в год</td>
+                                <td class="p-3">«Всё детям» вместо своей безопасности</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Что запомнить -->
+        <section class="bg-white rounded-[2rem] p-6 sm:p-8 md:p-12 text-primary shadow-sm border border-accent/50 hover-lift">
+            <div class="border-l-4 border-accent pl-5 mb-8">
+                <h2 class="text-3xl font-bold text-primary">Что запомнить</h2>
+            </div>
+            <p class="text-secondary mb-6 text-lg leading-relaxed">
+                Финансы — не про подвиги и резкие рывки. Это про решения, которые вы принимаете вовремя.
+            </p>
+            <div class="bg-primary text-white p-6 rounded-2xl shadow-sm">
+                <p class="text-lg font-normal">Если вы открыли этот гайд не в 20, а в 37, 48 или 56 — это не повод его
+                    закрывать с мыслью «поздно». Начать с учёта, подушки, закрытия долгов или первого взноса в капитал
+                    можно в любом возрасте. Просто чем раньше вы это сделаете, тем больше времени будет у ваших денег,
+                    чтобы стать опорой.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-muted bg-white/50">
+        <div class="mx-auto max-w-4xl px-4 py-12">
+            <div class="flex flex-col items-center justify-center text-center space-y-4">
+                <!-- Соцсети -->
+                <div class="space-y-4">
+                    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#7A531C]">
+                        Мы в соцсетях
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <a href="https://vk.com/volkovacapital" target="_blank" rel="noopener noreferrer"
+                            class="flex items-center gap-2 rounded-lg border border-muted bg-white/80 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                            aria-label="ВКонтакте">
+                            <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                                <path d="M13.2 17.5c-5.1 0-8-3.5-8.1-9.3h2.6c.1 4.2 1.9 6 3.4 6.4V8.2h2.5v3.7c1.5-.2 3-1.8 3.5-3.7h2.5a7 7 0 0 1-3.2 4.6 7.2 7.2 0 0 1 3.8 4.7h-2.8c-.5-1.8-1.9-3.2-3.8-3.4v3.4h-.4Z" />
+                            </svg>
+                            <span>VK</span>
+                        </a>
+                        <a href="https://youtube.com/@capitalvolkova" target="_blank" rel="noopener noreferrer"
+                            class="flex items-center gap-2 rounded-lg border border-muted bg-white/80 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                            aria-label="YouTube">
+                            <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                            </svg>
+                            <span>YouTube</span>
+                        </a>
+                        <a href="https://dzen.ru/volkovacapital" target="_blank" rel="noopener noreferrer"
+                            class="flex items-center gap-2 rounded-lg border border-muted bg-white/80 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                            aria-label="Дзен">
+                            <svg class="h-5 w-5 fill-current" viewBox="0 0 129 129">
+                                <path d="M128.389 62.7804C128.389 62.1406 127.869 61.6108 127.229 61.5808C104.266 60.7111 90.2906 57.782 80.5136 48.0051C70.7167 38.2081 67.7976 24.2225 66.9279 1.20969C66.9079 0.569886 66.3781 0.0500488 65.7283 0.0500488H63.0491C62.4093 0.0500488 61.8795 0.569886 61.8495 1.20969C60.9797 24.2125 58.0607 38.2081 48.2637 48.0051C38.4768 57.792 24.5111 60.7111 1.54831 61.5808C0.908509 61.6008 0.388672 62.1306 0.388672 62.7804V65.4596C0.388672 66.0994 0.908509 66.6292 1.54831 66.6592C24.5111 67.529 38.4868 70.458 48.2637 80.235C58.0407 90.0119 60.9597 103.958 61.8395 126.88C61.8595 127.52 62.3893 128.04 63.0391 128.04H65.7283C66.3681 128.04 66.8979 127.52 66.9279 126.88C67.8076 103.958 70.7267 90.0119 80.5036 80.235C90.2906 70.448 104.256 67.529 127.219 66.6592C127.859 66.6392 128.379 66.1094 128.379 65.4596V62.7804H128.389Z" />
+                            </svg>
+                            <span>Дзен</span>
+                        </a>
+                        <a href="https://t.me/+nfQKi7Kjr4MwYTVi" target="_blank" rel="noopener noreferrer"
+                            class="flex items-center gap-2 rounded-lg border border-muted bg-white/80 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                            aria-label="Telegram-канал">
+                            <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                            </svg>
+                            <span>Telegram</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-muted py-6">
+            <p class="text-center text-xs text-secondary">
+                &copy; 2026 Все права защищены.
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
